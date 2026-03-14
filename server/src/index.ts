@@ -18,12 +18,14 @@ async function bootstrap() {
   const app = express();
 
   app.use(
-    cors({
-      origin: CLIENT_ORIGIN,
-      credentials: true,
-    })
-  );
-
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://neoconnect-ukky.onrender.com",
+    ],
+    credentials: true,
+  })
+);
   app.use(express.json());
 
   const uploadsPath = path.resolve("src/uploads");
