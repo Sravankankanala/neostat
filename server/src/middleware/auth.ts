@@ -23,7 +23,7 @@ export function authRequired(req: Request, res: Response, next: NextFunction) {
   const token = authHeader.slice("Bearer ".length);
 
   try {
-    const payload = jwt.verify(token, JWT_SECRET) as AuthPayload;
+    const payload = jwt.verify(token, JWT_SECRET) as unknown as AuthPayload;;
     req.user = payload;
     next();
   } catch {
